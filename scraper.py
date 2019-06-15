@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
+import sys
 
 def getData(univ, prof):
 
@@ -48,3 +49,5 @@ def getData(univ, prof):
     finally:
         driver.close() 
 
+print(sys.argv[1], sys.argv[2])
+print(getData(sys.argv[1], sys.argv[2]))
