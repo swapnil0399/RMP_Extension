@@ -25,13 +25,18 @@ app.get('/', (req, res) => {
 	
 	// E.g : http://localhost:3000/name?firstname=Mike&lastname=Will 
 	// so, first name = Mike and last name = Will
+	
 	console.log(req.query.university)
 	console.log(req.query.prof)
-	//var process = spawn('python',["./scraper.py", req.query.university, req.query.prof]);
+	
+	//var process = spawn('python',["./scraper.py", req.query.university, req.query.prof, timeout=2000000]);
+	
 	//console.log("Request enqueued...")
-	var process = spawn('python',["./test.py", req.query.university, req.query.prof]); 
+	var process = spawn('python',["./test.py", req.query.university, req.query.prof, timeout=20]); 
+	
 	// Takes stdout data from script which executed 
 	// with arguments and send this data to res object 
+	
 	process.stdout.on('data', function(data) {
 		res.send(data.toString());
 	}) 
