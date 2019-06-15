@@ -7,7 +7,8 @@ app = Flask(__name__)
 def getData():
     #content = request.json
     #results = scraper.getData(content['University'], content['Professor'])
-    return jsonify(results)
+    #return jsonify(results)
+    return 'Hello World!'
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=80)
