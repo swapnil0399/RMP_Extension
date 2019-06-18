@@ -13,13 +13,12 @@ app.get('/', (req, res) => {
 
 	(() => {
 		try {
-			run(req.query.university, req.query.prof);
+			return run(req.query.university, req.query.prof);
 		} catch (exp) {
 			console.error(exp.stack);
 			process.exit(1);
 		}
-	})();
-	
+	})().then((result) => res.send(result));
 });
 
 function run(univ, prof) {
@@ -27,15 +26,16 @@ function run(univ, prof) {
 	
 	process.stdout.on('data', function(error) {
 		console.log(error.toString());
-		res.send(error.toString());
+		return error.toString();
 	}); 
 
 	process.stdout.on('data', function(data) {
 		console.log(data.toString());
-		res.send(data.toString());
+		return data.toString();
 	}); 
 
 	process.on('exit', function(code) {
 		console.log("Exited with code " + code);
+		return null;
 	});
 }
