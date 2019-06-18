@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
  	(async () => {
 		try {
-			result = await run(req.query.university, req.query.prof);
+			var result = await run(req.query.university, req.query.prof);
 			console.log(result);
 			res.send(result);
 			// result.then((data) => {
