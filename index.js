@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 		try {
 			var result = await run(req.query.university, req.query.prof);
 			console.log(result);
-			//res.send(result);
+			res.send(result);
 			// result.then((data) => {
 			// 	console.log(data);
 			// 	res.send(data);
@@ -36,12 +36,10 @@ function run(univ, prof) {
 		var process = spawn('python',["./scraper.py", univ, prof, timeout=20000]);
 		
 		process.stdout.on('data', function(data) {
-			console.log(data.toString());
 			resolve(data.toString());
 		}); 
 
 		process.stderr.on('data', function(error) {
-			console.log(error.toString());
 			reject(error.toString());
 		}); 
 
