@@ -32,45 +32,45 @@ app.get('/', (req, res) => {
 });
 
 function run(univ, prof) {
-	return exec('python',["./scraper.py", univ, prof], (error, stdout, stderr) => {
-		if (error) {
-			console.error(`exec error: ${error}`);
-			return;
-		} else {
-			return new Promise((resolve, reject) => {
+	return new Promise ((resolve, reject) => {
+		exec('python',["./scraper.py", univ, prof], (error, stdout, stderr) => {
+			if (error) {
+				console.error(error.trim());
+				return;
+			} else {
 				if(stderr){
-					reject(`${stderr}`);
+					reject(stderr.trim());
 				} else {
-					resolve(`${stdout}`);
+					resolve(stdout.trim());
 				}
-			})
-		}
-	}); 
-	// var result, error;
-
-	// process.stdout.on('data', function(data) {
-	// 	result = data.toString();
-	// 	error = false;
-	// }); 
-
-	// process.stderr.on('data', function(error) {
-	// 	result = error.toString();
-	// 	error = true;
-	// }); 
-
-	// process.on('exit', function(code) {
-	// 	console.log("Exited with code " + code);
-	// });
-
-	// if(error){
-	// 	return new Promise((resolve, reject) => {
-	// 		console.log(result);
-	// 		reject(result);
-	// 	});
-	// } else {
-	// 	return new Promise((resolve, reject) => {
-	// 		console.log(result);
-	// 		resolve(result);
-	// 	});
-	// }
+			}
+		})
+	})
 }
+// var result, error;
+
+// process.stdout.on('data', function(data) {
+// 	result = data.toString();
+// 	error = false;
+// }); 
+
+// process.stderr.on('data', function(error) {
+// 	result = error.toString();
+// 	error = true;
+// }); 
+
+// process.on('exit', function(code) {
+// 	console.log("Exited with code " + code);
+// });
+
+// if(error){
+// 	return new Promise((resolve, reject) => {
+// 		console.log(result);
+// 		reject(result);
+// 	});
+// } else {
+// 	return new Promise((resolve, reject) => {
+// 		console.log(result);
+// 		resolve(result);
+// 	});
+// }
