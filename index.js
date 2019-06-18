@@ -48,11 +48,11 @@ function run(univ, prof) {
 
 	if(error){
 		return new Promise((resolve, reject) => {
-			reject(result.toString());
+			reject(result);
 		});
 	} else {
 		return new Promise((resolve, reject) => {
-			resolve(result.toString());
+			resolve(result);
 		});
 	}
 }
