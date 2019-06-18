@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
  	(async () => {
 		try {
 			var result = await run(req.query.university, req.query.prof);
-			console.log(result);
-			res.send(result);
+			console.log(result.toString());
+			res.send(result.toString());
 			// result.then((data) => {
 			// 	console.log(data);
 			// 	res.send(data);
