@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 
 	(() => {
 		try {
-			run();
+			run(req.query.university, req.query.prof);
 		} catch (exp) {
 			console.error(exp.stack);
 			process.exit(1);
@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
 	
 });
 
-function run() {
-	var process = spawn('python',["./scraper.py", req.query.university, req.query.prof]); 
+function run(univ, prof) {
+	var process = spawn('python',["./scraper.py", univ, prof]); 
 	
 	process.stdout.on('data', function(error) {
 		console.log(error.toString());
