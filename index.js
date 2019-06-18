@@ -27,23 +27,32 @@ app.get('/', (req, res) => {
 
 function run(univ, prof) {
 	var process = spawn('python',["./scraper.py", univ, prof]); 
-	
-	process.stdout.on('data', function(error) {
-		console.log(error.toString());
-		return new Promise((resolve, reject) => {
-			reject(error.toString());
-		});
-	}); 
+	var result, error;
 
 	process.stdout.on('data', function(data) {
 		console.log(data.toString());
-		return new Promise((resolve, reject) => {
-			resolve(data.toString());
-		});
-	});
+		result = data.toString();
+		error = false;
+	}); 
+
+	process.stderr.on('data', function(error) {
+		console.log(data.toString());
+		result = error.toString();
+		error = true;
+	}); 
 
 	process.on('exit', function(code) {
 		console.log("Exited with code " + code);
 		return null;
 	});
+
+	if(error){
+		return new Promise((resolve, reject) => {
+			reject(result.toString());
+		});
+	} else {
+		return new Promise((resolve, reject) => {
+			resolve(result.toString());
+		});
+	}
 }
