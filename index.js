@@ -39,9 +39,9 @@ function run(univ, prof) {
 		} else {
 			return new Promise((resolve, reject) => {
 				if(stderr){
-					reject(stderr);
+					reject(`${stderr}`);
 				} else {
-					resolve(stdout);
+					resolve(`${stdout}`);
 				}
 			})
 		}
