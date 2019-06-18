@@ -11,9 +11,10 @@ app.get('/', (req, res) => {
 	console.log(req.query.university);
 	console.log(req.query.prof);
 
-	(() => {
+	async (() => {
 		try {
-			return run(req.query.university, req.query.prof);
+			result = await run(req.query.university, req.query.prof);
+			res.send(result);
 		} catch (exp) {
 			console.error(exp.stack);
 			process.exit(1);
