@@ -13,8 +13,8 @@ app.get('/', (req, res) => {
 
  	( async () => {
 		try {
-			result = await run(req.query.university, req.query.prof);
-			result.then((data) => {
+			result = await run(req.query.university, req.query.prof)
+			.then((data) => {
 				res.send(data);
 			})
 		} catch (exp) {
@@ -43,7 +43,6 @@ function run(univ, prof) {
 
 	process.on('exit', function(code) {
 		console.log("Exited with code " + code);
-		return null;
 	});
 
 	if(error){
