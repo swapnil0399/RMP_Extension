@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 
 function run(univ, prof) {
 	return new Promise ((resolve, reject) => {
-		process = spawn('python',["./scraper.py", univ, prof, timeout=20000]);
+		var process = spawn('python',["./scraper.py", univ, prof, timeout=20000]);
 		
 		process.stdout.on('data', function(data) {
 			console.log(data.toString());
