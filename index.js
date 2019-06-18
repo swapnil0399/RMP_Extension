@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 		try {
 			result = await run(req.query.university, req.query.prof)
 			.then((data) => {
+				console.log(data);
 				res.send(data);
 			})
 		} catch (exp) {
@@ -30,13 +31,11 @@ function run(univ, prof) {
 	var result, error;
 
 	process.stdout.on('data', function(data) {
-		console.log(data.toString());
 		result = data.toString();
 		error = false;
 	}); 
 
 	process.stderr.on('data', function(error) {
-		console.log(data.toString());
 		result = error.toString();
 		error = true;
 	}); 
