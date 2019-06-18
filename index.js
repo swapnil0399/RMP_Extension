@@ -14,9 +14,12 @@ app.get('/', (req, res) => {
 	async (() => {
 		try {
 			result = await run(req.query.university, req.query.prof);
-			res.send(result);
+			result.then((data) => {
+				res.send(data);
+			})
 		} catch (exp) {
 			console.error(exp.stack);
+			res.send("Something has gone bad.")
 			process.exit(1);
 		}
 	})();
@@ -27,13 +30,17 @@ function run(univ, prof) {
 	
 	process.stdout.on('data', function(error) {
 		console.log(error.toString());
-		return error.toString();
+		return new Promise((resolve, reject) => {
+			reject(error.toString());
+		});
 	}); 
 
 	process.stdout.on('data', function(data) {
 		console.log(data.toString());
-		return data.toString();
-	}); 
+		return new Promise((resolve, reject) => {
+			resolve(data.toString());
+		});
+	});
 
 	process.on('exit', function(code) {
 		console.log("Exited with code " + code);
