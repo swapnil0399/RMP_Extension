@@ -51,10 +51,12 @@ function run(univ, prof) {
 
 	if(error){
 		return new Promise((resolve, reject) => {
+			console.log(result);
 			reject(result);
 		});
 	} else {
 		return new Promise((resolve, reject) => {
+			console.log(result);
 			resolve(result);
 		});
 	}
