@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 			console.error(exp.stack);
 			process.exit(1);
 		}
-	})().then((result) => res.send(result));
+	})();
 });
 
 function run(univ, prof) {
