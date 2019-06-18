@@ -1,6 +1,6 @@
 var express = require('express'); 
 var app = express();
-var spawn = require("child_process").spawn; 
+var exec = require("child_process").exec; 
 
 app.listen(3000, function() { 
 	console.log('server running on port 3000'); 
@@ -32,32 +32,45 @@ app.get('/', (req, res) => {
 });
 
 function run(univ, prof) {
-	var process = spawn('python',["./scraper.py", univ, prof]); 
-	var result, error;
-
-	process.stdout.on('data', function(data) {
-		result = data.toString();
-		error = false;
+	return exec('python',["./scraper.py", univ, prof], (error, stdout, stderr) => {
+		if (error) {
+			console.error(`exec error: ${error}`);
+			return;
+		} else {
+			return new Promise((resolve, reject) => {
+				if(stderr){
+					reject(stderr);
+				} else {
+					resolve(stdout);
+				}
+			})
+		}
 	}); 
+	// var result, error;
 
-	process.stderr.on('data', function(error) {
-		result = error.toString();
-		error = true;
-	}); 
+	// process.stdout.on('data', function(data) {
+	// 	result = data.toString();
+	// 	error = false;
+	// }); 
 
-	process.on('exit', function(code) {
-		console.log("Exited with code " + code);
-	});
+	// process.stderr.on('data', function(error) {
+	// 	result = error.toString();
+	// 	error = true;
+	// }); 
 
-	if(error){
-		return new Promise((resolve, reject) => {
-			console.log(result);
-			reject(result);
-		});
-	} else {
-		return new Promise((resolve, reject) => {
-			console.log(result);
-			resolve(result);
-		});
-	}
+	// process.on('exit', function(code) {
+	// 	console.log("Exited with code " + code);
+	// });
+
+	// if(error){
+	// 	return new Promise((resolve, reject) => {
+	// 		console.log(result);
+	// 		reject(result);
+	// 	});
+	// } else {
+	// 	return new Promise((resolve, reject) => {
+	// 		console.log(result);
+	// 		resolve(result);
+	// 	});
+	// }
 }
