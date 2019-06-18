@@ -1,53 +1,61 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
-import sys
+import sys, logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def getData(univ, prof):
 
-    url = "https://www.ratemyprofessors.com"
+    try:
 
-    chromeOptions = Options()  
-    chromeOptions.add_argument("--headless")
+        url = "https://www.ratemyprofessors.com"
 
-    driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', chrome_options=chromeOptions)
-    driver.implicitly_wait(30)
+        chromeOptions = Options()  
+        chromeOptions.add_argument("--headless")
 
-    driver.get(url)
+        driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', chrome_options=chromeOptions)
+        driver.implicitly_wait(30)
 
-    driver.find_element_by_xpath("//div[@id = 'cookie_notice']/a[@class = 'btn close-this']").click()
-    driver.find_element_by_xpath("//a[@id = 'findProfessorOption']/span[@class = 'v-align info']").click()
+        driver.get(url)
 
-    school_name = driver.find_element_by_id('searchProfessorSchool2')
-    school_name.send_keys(univ)
+        driver.find_element_by_xpath("//div[@id = 'cookie_notice']/a[@class = 'btn close-this']").click()
+        driver.find_element_by_xpath("//a[@id = 'findProfessorOption']/span[@class = 'v-align info']").click()
 
-    prof_bar = driver.find_element_by_id('searchProfessorName')
-    prof_bar.send_keys(prof)
+        school_name = driver.find_element_by_id('searchProfessorSchool2')
+        school_name.send_keys(univ)
 
-    submit = driver.find_element_by_id('prof-name-btn')
-    submit.submit()
+        prof_bar = driver.find_element_by_id('searchProfessorName')
+        prof_bar.send_keys(prof)
 
-    try: 
-        results = driver.find_element_by_xpath("//*[@id='searchResultsBox']/div[2]/ul/li/a/span[2]/span[1]")
-        results.click()
-        quality = driver.find_element_by_xpath("//*[@id='mainContent']/div[1]/div[3]/div[1]/div/div[1]/div/div/div").text
-        level_of_diff = driver.find_element_by_xpath("//*[@id='mainContent']/div[1]/div[3]/div[1]/div/div[2]/div[2]/div").text
-        rating_url = driver.current_url
-        print(quality, level_of_diff, "\n", rating_url)
-        return {    
-            'University' : univ, 
-            'Professor_Name' : prof, 
-            'Quality' : quality, 
-            'Level_Of_Diff' : level_of_diff, 
-            'URL' : rating_url
-        }    
+        submit = driver.find_element_by_id('prof-name-btn')
+        submit.submit()
 
-    except NoSuchElementException as exp:
-        print('ERROR: ' , str(exp))
-        return None
+        try: 
+            results = driver.find_element_by_xpath("//*[@id='searchResultsBox']/div[2]/ul/li/a/span[2]/span[1]")
+            results.click()
+            quality = driver.find_element_by_xpath("//*[@id='mainContent']/div[1]/div[3]/div[1]/div/div[1]/div/div/div").text
+            level_of_diff = driver.find_element_by_xpath("//*[@id='mainContent']/div[1]/div[3]/div[1]/div/div[2]/div[2]/div").text
+            rating_url = driver.current_url
 
-    finally:
-        driver.close() 
+            return {    
+                'University' : univ, 
+                'Professor_Name' : prof, 
+                'Quality' : quality, 
+                'Level_Of_Diff' : level_of_diff, 
+                'URL' : rating_url
+            }    
 
-print(sys.argv[1], sys.argv[2])
+        except Exception as exp:
+            print('ERROR: ' , str(exp))
+            return None
+
+        finally:
+            driver.close()
+
+    except Exception as exp:
+        logger.error('ERORR: ' + str(exp))
+
+# print(sys.argv[1], sys.argv[2])
 print(getData(sys.argv[1], sys.argv[2]))
