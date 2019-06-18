@@ -36,10 +36,12 @@ function run(univ, prof) {
 		process = spawn('python',["./scraper.py", univ, prof, timeout=20000]);
 		
 		process.stdout.on('data', function(data) {
+			console.log(data.toString());
 			resolve(data.toString());
 		}); 
 
 		process.stderr.on('data', function(error) {
+			console.log(error.toString());
 			reject(error.toString());
 		}); 
 
