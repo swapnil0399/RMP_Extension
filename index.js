@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 function run() {
-	var process = spawn('python',["./test.py", req.query.university, req.query.prof]); 
+	var process = spawn('python',["./scraper.py", req.query.university, req.query.prof]); 
 	
 	process.stdout.on('data', function(error) {
 		console.log(error.toString());
