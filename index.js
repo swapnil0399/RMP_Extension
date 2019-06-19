@@ -3,7 +3,7 @@ var app = express();
 var spawn = require("child_process").spawn;
 var mysql = require('mysql');
 var fs = require('fs');
-var conn, rowCount = 0;
+var conn;
 
 app.listen(3000, function() { 
 	console.log('server running on port 3000');
@@ -70,8 +70,6 @@ function run(univ, prof) {
 }
 
 function insertIntoSQL(result){
-	console.log(result);
-	result = JSON.parse(result);
 	if(result){
 		var univ = String(result.University).toUpperCase();
 		var prof = String(result.Professor_Name).toUpperCase();
@@ -81,7 +79,7 @@ function insertIntoSQL(result){
 
 		console.log(univ, prof, quality, level, url);
 
-		var query = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + univ + '","' + prof + '",' + quality + ',' + level + ',"' + url + '");'
+		var query = 'INSERT INTO RECORDS (UNIVERSITY, NAME, QUALITY, DIFFICULTY, URL) VALUES("' + univ + '","' + prof + '",' + quality + ',' + level + ',"' + url + '");'
 		conn.query(query, (error, results) => {
 			if(error) throw error;
 			console.log("Successfully added ", prof);
