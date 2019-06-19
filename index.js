@@ -70,17 +70,13 @@ function run(univ, prof) {
 }
 
 function insertIntoSQL(result){
-	console.log(result);
-	result = JSON.stringify(result);
-	result = JSON.parse(result);
+	result = JSON.parse(result.toString());
 	if(result){
 		var univ = String(result.University).toUpperCase();
 		var prof = String(result.Professor_Name).toUpperCase();
 		var quality = result.Quality;
 		var level = result.Level_of_Diff;
 		var url = result.URL;
-
-		console.log(univ, prof, quality, level, url);
 
 		var query = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + univ + '","' + prof + '",' + quality + ',' + level + ',"' + url + '");'
 		conn.query(query, (error, results) => {
