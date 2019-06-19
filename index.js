@@ -34,8 +34,9 @@ app.get('/', (req, res) => {
 				if (error){
 					throw error;
 				} else if(results.length > 0){
-					console.log(JSON.parse(results[0]));
-					res.send(JSON.parse(results[0]));
+					console.log(results);
+					//console.log(JSON.parse(results[0]));
+					//res.send(JSON.parse(results[0]));
 				} else {
 					(async () => {
 						var result = await run(req.query.university, req.query.prof);
