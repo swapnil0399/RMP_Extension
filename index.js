@@ -1,9 +1,16 @@
 var express = require('express'); 
 var app = express();
-var spawn = require("child_process").spawn; 
+var spawn = require("child_process").spawn;
+var mysql = require('mysql');
+var fs = require('fs');
 
 app.listen(3000, function() { 
-	console.log('server running on port 3000'); 
+	console.log('server running on port 3000');
+	var conn = mysql.createConnection(fs.readFileSync("rds_config.json"));
+	conn.connect(function(err) {
+		if (err) throw err;
+		console.log("Connection to RDS succeeded...");
+	  });
 }) 
 
 app.get('/', (req, res) => { 
