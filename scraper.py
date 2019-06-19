@@ -39,13 +39,13 @@ def getData(univ, prof):
             level_of_diff = driver.find_element_by_xpath("//*[@id='mainContent']/div[1]/div[3]/div[1]/div/div[2]/div[2]/div").text
             rating_url = driver.current_url
 
-            return {    
+            return json.dumps({    
                 "University" : univ, 
                 "Professor_Name" : prof, 
                 "Quality" : quality, 
                 "Level_Of_Diff" : level_of_diff, 
                 "URL" : rating_url
-            }    
+            })    
 
         except Exception as exp:
             print('ERROR: ' , str(exp))
