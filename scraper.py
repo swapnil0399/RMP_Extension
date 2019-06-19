@@ -40,11 +40,11 @@ def getData(univ, prof):
             rating_url = driver.current_url
 
             return {    
-                'University' : univ, 
-                'Professor_Name' : prof, 
-                'Quality' : quality, 
-                'Level_Of_Diff' : level_of_diff, 
-                'URL' : rating_url
+                "University" : univ, 
+                "Professor_Name" : prof, 
+                "Quality" : quality, 
+                "Level_Of_Diff" : level_of_diff, 
+                "URL" : rating_url
             }    
 
         except Exception as exp:
