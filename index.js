@@ -3,12 +3,13 @@ var app = express();
 var spawn = require("child_process").spawn;
 var mysql = require('mysql');
 var fs = require('fs');
+var conn, rowCount;
 
 app.listen(3000, function() { 
 	console.log('server running on port 3000');
 	var contents = JSON.parse(fs.readFileSync("rds_config.json"));
-
-	var conn = mysql.createConnection({
+	rowCount = contents.rowCount;
+	conn = mysql.createConnection({
 		host: contents.host,
   		user: contents.user,
 		password: contents.password,
@@ -28,12 +29,26 @@ app.get('/', (req, res) => {
 
  	(async () => {
 		try {
-			var result = await run(req.query.university, req.query.prof);
-			res.send(result);
+			var selectQuery = 'SELECT * FROM RECORDS WHERE LOWER(UNIVERSITY) = LOWER("' + req.query.university + '") && LOWER(NAME) = LOWER("' + req.query.prof + '");'
+			conn.query(selectQuery, (error, results) => {
+				if (error){
+					throw error;
+				} else if(results.length > 0){
+					console.log(JSON.parse(results[0]));
+					res.send(JSON.parse(results[0]));
+				} else {
+					var result = await run(req.query.university, req.query.prof);
+					var insertQuery = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + result.University.toUpperCase() + '","' + result.Professor_Name.toUpperCase() + '",' + result.Quality + ',' + result.Level_Of_Diff + ',"' + result.URL + '");' 
+					conn.query(insertQuery, (error, results) => {
+						if (error) throw error;
+						console.log("Successfully added ", result.Professor_Name);
+					});
+					res.send(result);
+				}
+			});
 		} catch (exp) {
 			console.error(exp.stack);
 			res.send("Something has gone bad.")
-			process.exit(1);
 		}
 	})();
 });
