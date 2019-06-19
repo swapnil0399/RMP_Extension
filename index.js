@@ -40,11 +40,12 @@ app.get('/', (req, res) => {
 					(async () => {
 						var result = await run(req.query.university, req.query.prof);
 						console.log(result);
-						var insertQuery = await createInsertQuery(result); 
-						conn.query(insertQuery, (error, results) => {
-							if (error) throw error;
-							console.log("Successfully added ", result.Professor_Name);
-						});
+						var insertQuery = createInsertQuery(result).then((insertQuery) => {
+							conn.query(insertQuery, (error, results) => {
+								if (error) throw error;
+								console.log("Successfully added ", result.Professor_Name);
+							});
+						}); 
 						res.send(result);
 					})();
 				}
