@@ -39,8 +39,8 @@ app.get('/', (req, res) => {
 				} else {
 					(async () => {
 						var result = await run(req.query.university, req.query.prof);
-						console.log(result);
 						var insertQuery = createInsertQuery(result).then((insertQuery) => {
+							console.log(insertQuery);
 							conn.query(insertQuery, (error, results) => {
 								if (error) throw error;
 								console.log("Successfully added ", result.Professor_Name);
@@ -76,7 +76,6 @@ function run(univ, prof) {
 }
 
 function createInsertQuery(result){
-	console.log(result);
 	return new Promise ((resolve, reject) => {
 		if(result){
 			resolve('INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + String(result.University).toUpperCase() + '","' + String(result.Professor_Name).toUpperCase() + '",' + result.Quality + ',' + result.Level_Of_Diff + ',"' + String(result.URL) + '");');
