@@ -6,7 +6,15 @@ var fs = require('fs');
 
 app.listen(3000, function() { 
 	console.log('server running on port 3000');
-	var conn = mysql.createConnection(fs.readFileSync("rds_config.json"));
+	var contents = JSON.parse(fs.readFileSync("rds_config.json"));
+
+	var conn = mysql.createConnection({
+		host: contents.host,
+  		user: contents.user,
+		password: contents.password,
+		database: contents.database
+	});
+
 	conn.connect(function(err) {
 		if (err) throw err;
 		console.log("Connection to RDS succeeded...");
