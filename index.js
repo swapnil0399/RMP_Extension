@@ -72,6 +72,7 @@ function run(univ, prof) {
 function insertIntoSQL(result){
 	console.log(result);
 	result = JSON.stringify(result);
+	result = JSON.parse(result);
 	if(result){
 		var univ = String(result.University).toUpperCase();
 		var prof = String(result.Professor_Name).toUpperCase();
