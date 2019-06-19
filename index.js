@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 					(async () => {
 						var result = await run(req.query.university, req.query.prof);
 						console.log(result);
-						var insertQuery = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + result.University.toString().toUpperCase() + '","' + result.Professor_Name.toString().toUpperCase() + '",' + result.Quality + ',' + result.Level_Of_Diff + ',"' + result.URL.toString() + '");' 
+						var insertQuery = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + result.University + '","' + result.Professor_Name + '",' + result.Quality + ',' + result.Level_Of_Diff + ',"' + result.URL + '");' 
 						conn.query(insertQuery, (error, results) => {
 							if (error) throw error;
 							console.log("Successfully added ", result.Professor_Name);
