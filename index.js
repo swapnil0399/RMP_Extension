@@ -80,6 +80,8 @@ function insertIntoSQL(result){
 		var level = result.Level_of_Diff;
 		var url = result.URL;
 
+		console.log(univ, prof, quality, level, url);
+
 		var query = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + univ + '","' + prof + '",' + quality + ',' + level + ',"' + url + '");'
 		conn.query(query, (error, results) => {
 			if(error) throw error;
