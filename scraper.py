@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import NoSuchElementException
-import sys, logging
+import sys, logging, json
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
