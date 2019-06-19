@@ -40,6 +40,7 @@ app.get('/', (req, res) => {
 					(() => {
 						var result = run(req.query.university, req.query.prof)
 						.then((result) => {
+							res.send(result);
 							var insertQuery = createInsertQuery(result)
 							.then((insertQuery) => {
 								console.log(insertQuery);
@@ -49,7 +50,7 @@ app.get('/', (req, res) => {
 								});
 							}); 
 						});
-						res.send(result);
+						
 					})();
 				}
 			});
