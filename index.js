@@ -3,7 +3,7 @@ var app = express();
 var spawn = require("child_process").spawn;
 var mysql = require('mysql');
 var fs = require('fs');
-var conn, rowCount;
+var conn, rowCount = 0;
 
 app.listen(3000, function() { 
 	console.log('server running on port 3000');
@@ -76,7 +76,7 @@ function insertIntoSQL(result){
 		var univ = String(result.University).toUpperCase();
 		var prof = String(result.Professor_Name).toUpperCase();
 		var quality = result.Quality;
-		var level = result.Level_of_Diff;
+		var level = result.Level_Of_Diff;
 		var url = result.URL;
 
 		console.log(univ, prof, quality, level, url);
