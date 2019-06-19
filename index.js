@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 				if (error){
 					throw error;
 				} else if(results.length > 0){
-					//console.log(results);
+					console.log(results);
 					console.log(results[0].RowDataPacket);
 					res.send(results[0].RowDataPacket);
 				} else {
