@@ -14,15 +14,7 @@ app.get('/', (req, res) => {
  	(async () => {
 		try {
 			var result = await run(req.query.university, req.query.prof);
-			console.log(result);
 			res.send(result);
-			// result.then((data) => {
-			// 	console.log(data);
-			// 	res.send(data);
-			// }, (error) => {
-			// 	console.log(error);
-			// 	res.send(error);
-			// })
 		} catch (exp) {
 			console.error(exp.stack);
 			res.send("Something has gone bad.")
