@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
  	(async () => {
 		try {
 			var selectQuery = 'SELECT * FROM RECORDS WHERE LOWER(UNIVERSITY) = LOWER("' + req.query.university + '") && LOWER(NAME) = LOWER("' + req.query.prof + '");'
-			conn.query(selectQuery, (error, results) => {
+			conn.query(selectQuery, async (error, results) => {
 				if (error){
 					throw error;
 				} else if(results.length > 0){
