@@ -37,20 +37,10 @@ app.get('/', (req, res) => {
 					console.log(results[0]);
 					res.send(results[0]);
 				} else {
-					(() => {
-						var result = run(req.query.university, req.query.prof)
-						.then((result) => {
-							res.send(result);
-							var insertQuery = createInsertQuery(result)
-							.then((insertQuery) => {
-								console.log(insertQuery);
-								conn.query(insertQuery, (error, results) => {
-									if (error) throw error;
-									console.log("Successfully added ", result.Professor_Name);
-								});
-							}); 
-						});
-						
+					(async () => {
+						var result = await run(req.query.university, req.query.prof);
+						res.send(result);
+						insertIntoSQL(result);
 					})();
 				}
 			});
@@ -79,13 +69,19 @@ function run(univ, prof) {
 	})
 }
 
-function createInsertQuery(result){
-	return new Promise ((resolve, reject) => {
-		if(result){
-			resolve('INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + String(result.University).toUpperCase() + '","' + String(result.Professor_Name).toUpperCase() + '",' + result.Quality + ',' + result.Level_Of_Diff + ',"' + String(result.URL) + '");');
-		} else{
-			reject();
-		}
-	});
-}
+function insertIntoSQL(result){
+	console.log(result);
+	if(result){
+		var univ = String(result.University).toUpperCase();
+		var prof = String(result.Professor_Name).toUpperCase();
+		var quality = result.Quality;
+		var level = result.Level_of_Diff;
+		var url = result.URL;
 
+		var query = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + univ + '","' + prof + '",' + quality + ',' + level + ',"' + url + '");'
+		conn.query(query, (error, results) => {
+			if(error) throw error;
+			console.log("Successfully added ", prof);
+		});
+	}
+}
