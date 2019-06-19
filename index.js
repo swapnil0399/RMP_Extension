@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 					throw error;
 				} else if(results.length > 0){
 					console.log(results);
-					console.log(results[0].RowDataPacket);
+					console.log(results[0]);
 					res.send(results[0].RowDataPacket);
 				} else {
 					(async () => {
