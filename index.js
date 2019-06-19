@@ -75,6 +75,7 @@ function run(univ, prof) {
 }
 
 function createInsertQuery(result){
+	console.log(result);
 	return new Promise ((resolve, reject) => {
 		if(result){
 			resolve('INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + String(result.University).toUpperCase() + '","' + String(result.Professor_Name).toUpperCase() + '",' + result.Quality + ',' + result.Level_Of_Diff + ',"' + String(result.URL) + '");');
