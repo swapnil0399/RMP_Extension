@@ -34,9 +34,8 @@ app.get('/', (req, res) => {
 				if (error){
 					throw error;
 				} else if(results.length > 0){
-					console.log(results);
 					console.log(results[0]);
-					res.send(results[0].RowDataPacket);
+					res.send(results[0]);
 				} else {
 					(async () => {
 						var result = await run(req.query.university, req.query.prof);
