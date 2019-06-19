@@ -30,20 +30,22 @@ app.get('/', (req, res) => {
  	(async () => {
 		try {
 			var selectQuery = 'SELECT * FROM RECORDS WHERE LOWER(UNIVERSITY) = LOWER("' + req.query.university + '") && LOWER(NAME) = LOWER("' + req.query.prof + '");'
-			conn.query(selectQuery, async (error, results) => {
+			conn.query(selectQuery, (error, results) => {
 				if (error){
 					throw error;
 				} else if(results.length > 0){
 					console.log(JSON.parse(results[0]));
 					res.send(JSON.parse(results[0]));
 				} else {
-					var result = await run(req.query.university, req.query.prof);
-					var insertQuery = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + result.University.toUpperCase() + '","' + result.Professor_Name.toUpperCase() + '",' + result.Quality + ',' + result.Level_Of_Diff + ',"' + result.URL + '");' 
-					conn.query(insertQuery, (error, results) => {
-						if (error) throw error;
-						console.log("Successfully added ", result.Professor_Name);
-					});
-					res.send(result);
+					(async () => {
+						var result = await run(req.query.university, req.query.prof);
+						var insertQuery = 'INSERT INTO RECORDS VALUES(' + (++rowCount) + ',"' + result.University.toUpperCase() + '","' + result.Professor_Name.toUpperCase() + '",' + result.Quality + ',' + result.Level_Of_Diff + ',"' + result.URL + '");' 
+						conn.query(insertQuery, (error, results) => {
+							if (error) throw error;
+							console.log("Successfully added ", result.Professor_Name);
+						});
+						res.send(result);
+					})();
 				}
 			});
 		} catch (exp) {
