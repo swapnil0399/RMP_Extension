@@ -37,15 +37,18 @@ app.get('/', (req, res) => {
 					console.log(results[0]);
 					res.send(results[0]);
 				} else {
-					(async () => {
-						var result = await run(req.query.university, req.query.prof);
-						var insertQuery = createInsertQuery(result).then((insertQuery) => {
-							console.log(insertQuery);
-							conn.query(insertQuery, (error, results) => {
-								if (error) throw error;
-								console.log("Successfully added ", result.Professor_Name);
-							});
-						}); 
+					(() => {
+						var result = run(req.query.university, req.query.prof)
+						.then((result) => {
+							var insertQuery = createInsertQuery(result)
+							.then((insertQuery) => {
+								console.log(insertQuery);
+								conn.query(insertQuery, (error, results) => {
+									if (error) throw error;
+									console.log("Successfully added ", result.Professor_Name);
+								});
+							}); 
+						});
 						res.send(result);
 					})();
 				}
