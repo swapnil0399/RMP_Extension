@@ -1,0 +1,12 @@
+{
+    "manifest_version" : 2,
+    "name" : "Good Prof Bad Prof",
+    "description" : "Provides the professor rating",
+    "version" : "1.0.0",
+    "icons" : {},
+    "browser_action:" : {
+      "default_icon" : "",
+      "default_popup" : "popup.html"
+    },
+    "permissions" : ["activeTab"]
+}
