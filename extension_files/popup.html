@@ -10,240 +10,254 @@
 </head>
 
 <body>
-    <div class="loader"></div>
-    <div class="tab" id="tab_1">
-        <div class="modal-header">
-            <div class="title">
-                <h1>Good Prof Bad Prof</h1>
-            </div>
-            <div class="logo_settings">
-                <div class="logo">
-                    <h1>R</h1>
+    <div id="app">
+        <div class="loader"></div>
+        <div class="tab" id="tab_1">
+            <div class="modal-header">
+                <div class="title">
+                    <h1>Good Prof Bad Prof</h1>
                 </div>
-                <div class="settings">
-                    <i class="fas fa-cog fa-2x"></i>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                    <i class="fas fa-question-circle fa-2x"></i>
-                    <i class="fas fa-times-circle fa-2x"></i>
-                </div>
-            </div>
-        </div>
-        <div class="modal-content">
-            <div class="univ_name">
-                <h2>THE UNIVERSITY OF TEXAS AT DALLAS</h2>
-            </div>
-            <div class="prof_name">
-                <h3>IVOR PAGE</h3>
-            </div>
-            <div class="ratings">
-                <div class="quality">
-                    <h1>3.1</h1>
-                    <div class="star-ratings-css">
-                        <div class="star-ratings-css-top" style="width: 80%">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                        <div class="star-ratings-css-bottom">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="logo_settings">
+                    <div class="logo">
+                        <h1>R</h1>
                     </div>
-                </div>
-                <div class="difficulty">
-                    <h1>3.1</h1>
-                    <div class="star-ratings-css">
-                        <div class="star-ratings-css-top" style="width: 80%">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                        <div class="star-ratings-css-bottom">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <div class="settings">
+                        <i class="fas fa-cog fa-2x"></i>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <i class="fas fa-question-circle fa-2x"></i>
+                        <i class="fas fa-times-circle fa-2x"></i>
                     </div>
                 </div>
             </div>
-            <div class="submit_link">
-                <div class="rate">
-                    <button type="submit">RATE PROF</button>
+            <div class="modal-content">
+                <div class="univ_name">
+                    <input type="text" placeholder="Enter University name here..." id="txt_univ">
+                    <h1 id="lbl_univ"></h1>
                 </div>
-                <div class="link">
-                    <i class="fas fa-external-link-alt fa-2x"></i>
+                <div class="prof_name">
+                    <input type="text" placeholder="Enter Professor name here..." id="txt_prof">
+                    <h2 id="lbl_prof"></h2>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab" id="tab_2">
-        <div class="modal-header">
-            <div class="title">
-                <h1>Good Prof Bad Prof</h1>
-            </div>
-            <div class="logo_settings">
-                <div class="logo">
-                    <h1>R</h1>
-                </div>
-                <div class="settings">
-                    <i class="fas fa-cog fa-2x"></i>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                    <i class="fas fa-question-circle fa-2x"></i>
-                    <i class="fas fa-times-circle fa-2x"></i>
-                </div>
-            </div>
-        </div>
-        <div class="modal-content">
-            <div class="univ_name">
-                <h2>THE UNIVERSITY OF TEXAS AT DALLAS</h2>
-            </div>
-            <div class="prof_name">
-                <h3>IVOR PAGE</h3>
-            </div>
-            <div class="ratings">
-                <div class="quality">
-                    <h1>3.2</h1>
-                    <div class="star-ratings-css">
-                        <div class="star-ratings-css-top" style="width: 80%">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                        <div class="star-ratings-css-bottom">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="ratings">
+                    <div class="quality">
+                        <h1 id="lbl_quality">3.1</h1>
+                        <div class="star-ratings-css">
+                            <div class="star-ratings-css-top" style="width: 80%" id="rating_bar_quality">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <div class="star-ratings-css-bottom">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
+                    </div>
+                    <div class="difficulty">
+                        <h1 id="lbl_difficulty">3.1</h1>
+                        <div class="star-ratings-css">
+                            <div class="star-ratings-css-top" style="width: 80%" id="rating_bar_diff">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <div class="star-ratings-css-bottom">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
                     </div>
                 </div>
-                <div class="difficulty">
-                    <h1>3.2</h1>
-                    <div class="star-ratings-css">
-                        <div class="star-ratings-css-top" style="width: 80%">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                        <div class="star-ratings-css-bottom">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="submit_link">
+                    <div class="rate">
+                        <button type="submit" id="submit"> RATE PROF </button>
+                        <button type="reset" class="reset"> Clear </button>
+                    </div>
+                    <div class="link">
+                        <a href="" id="link_rmp" target="_blank"><i class="fas fa-external-link-alt fa-2x" ></i></a>
                     </div>
                 </div>
             </div>
-            <div class="submit_link">
-                <div class="rate">
-                    <button type="submit">RATE PROF</button>
-                </div>
-                <div class="link">
-                    <i class="fas fa-external-link-alt fa-2x"></i>
-                </div>
-            </div>
         </div>
-    </div>
-    <div class="tab" id="tab_3">
-        <div class="modal-header">
-            <div class="title">
-                <h1>Good Prof Bad Prof</h1>
-            </div>
-            <div class="logo_settings">
-                <div class="logo">
-                    <h1>R</h1>
+        <div class="tab" id="tab_2">
+            <div class="modal-header">
+                <div class="title">
+                    <h1>Good Prof Bad Prof</h1>
                 </div>
-                <div class="settings">
-                    <i class="fas fa-cog fa-2x"></i>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                    <i class="fas fa-question-circle fa-2x"></i>
-                    <i class="fas fa-times-circle fa-2x"></i>
-                </div>
-            </div>
-        </div>
-        <div class="modal-content">
-            <div class="univ_name">
-                <h2>THE UNIVERSITY OF TEXAS AT DALLAS</h2>
-            </div>
-            <div class="prof_name">
-                <h3>IVOR PAGE</h3>
-            </div>
-            <div class="ratings">
-                <div class="quality">
-                    <h1>3.3</h1>
-                    <div class="star-ratings-css">
-                        <div class="star-ratings-css-top" style="width: 80%">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                        <div class="star-ratings-css-bottom">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="logo_settings">
+                    <div class="logo">
+                        <h1>R</h1>
                     </div>
-                </div>
-                <div class="difficulty">
-                    <h1>3.3</h1>
-                    <div class="star-ratings-css">
-                        <div class="star-ratings-css-top" style="width: 80%">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                        <div class="star-ratings-css-bottom">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                    <div class="settings">
+                        <i class="fas fa-cog fa-2x"></i>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <i class="fas fa-question-circle fa-2x"></i>
+                        <i class="fas fa-times-circle fa-2x"></i>
                     </div>
                 </div>
             </div>
-            <div class="submit_link">
-                <div class="rate">
-                    <button type="submit">RATE PROF</button>
+            <div class="modal-content">
+                <div class="univ_name">
+                    <input type="text" placeholder="Enter University name here..." id="txt_univ">
+                    <h1 id="lbl_univ"></h1>
                 </div>
-                <div class="link">
-                    <i class="fas fa-external-link-alt fa-2x"></i>
+                <div class="prof_name">
+                    <input type="text" placeholder="Enter Professor name here..." id="txt_prof">
+                    <h2 id="lbl_prof"></h2>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="tab" id="tab_4">
-        <div class="modal-header">
-            <div class="title">
-                <h1>Good Prof Bad Prof</h1>
-            </div>
-            <div class="logo_settings">
-                <div class="logo">
-                    <h1>R</h1>
-                </div>
-                <div class="settings">
-                    <i class="fas fa-cog fa-2x"></i>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                    <i class="fas fa-question-circle fa-2x"></i>
-                    <i class="fas fa-times-circle fa-2x"></i>
-                </div>
-            </div>
-        </div>
-        <div class="modal-content">
-            <div class="univ_name">
-                <h2>THE UNIVERSITY OF TEXAS AT DALLAS</h2>
-            </div>
-            <div class="prof_name">
-                <h3>IVOR PAGE</h3>
-            </div>
-            <div class="ratings">
-                <div class="quality">
-                    <h1>3.4</h1>
-                    <div class="star-ratings-css">
-                        <div class="star-ratings-css-top" style="width: 80%">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                        <div class="star-ratings-css-bottom">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="ratings">
+                    <div class="quality">
+                        <h1 id="lbl_quality">3.1</h1>
+                        <div class="star-ratings-css">
+                            <div class="star-ratings-css-top" style="width: 80%" id="rating_bar_quality">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <div class="star-ratings-css-bottom">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
+                    </div>
+                    <div class="difficulty">
+                        <h1 id="lbl_difficulty">3.1</h1>
+                        <div class="star-ratings-css">
+                            <div class="star-ratings-css-top" style="width: 80%" id="rating_bar_diff">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <div class="star-ratings-css-bottom">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
                     </div>
                 </div>
-                <div class="difficulty">
-                    <h1>3.4</h1>
-                    <div class="star-ratings-css">
-                        <div class="star-ratings-css-top" style="width: 80%">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                        <div class="star-ratings-css-bottom">
-                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="submit_link">
+                    <div class="rate">
+                        <button type="submit" id="submit"> RATE PROF </button>
+                        <button type="reset" class="reset"> Clear </button>
+                    </div>
+                    <div class="link">
+                        <a href="" id="link_rmp" target="_blank"><i class="fas fa-external-link-alt fa-2x" ></i></a>
                     </div>
                 </div>
             </div>
-            <div class="submit_link">
-                <div class="rate">
-                    <button type="submit">RATE PROF</button>
+        </div>
+        <div class="tab" id="tab_3">
+            <div class="modal-header">
+                <div class="title">
+                    <h1>Good Prof Bad Prof</h1>
                 </div>
-                <div class="link">
-                    <i class="fas fa-external-link-alt fa-2x"></i>
+                <div class="logo_settings">
+                    <div class="logo">
+                        <h1>R</h1>
+                    </div>
+                    <div class="settings">
+                        <i class="fas fa-cog fa-2x"></i>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <i class="fas fa-question-circle fa-2x"></i>
+                        <i class="fas fa-times-circle fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content">
+                <div class="univ_name">
+                    <input type="text" placeholder="Enter University name here..." id="txt_univ">
+                    <h1 id="lbl_univ"></h1>
+                </div>
+                <div class="prof_name">
+                    <input type="text" placeholder="Enter Professor name here..." id="txt_prof">
+                    <h2 id="lbl_prof"></h2>
+                </div>
+                <div class="ratings">
+                    <div class="quality">
+                        <h1 id="lbl_quality">3.1</h1>
+                        <div class="star-ratings-css">
+                            <div class="star-ratings-css-top" style="width: 80%" id="rating_bar_quality">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <div class="star-ratings-css-bottom">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
+                    </div>
+                    <div class="difficulty">
+                        <h1 id="lbl_difficulty">3.1</h1>
+                        <div class="star-ratings-css">
+                            <div class="star-ratings-css-top" style="width: 80%" id="rating_bar_diff">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <div class="star-ratings-css-bottom">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit_link">
+                    <div class="rate">
+                        <button type="submit" id="submit"> RATE PROF </button>
+                        <button type="reset" class="reset"> Clear </button>
+                    </div>
+                    <div class="link">
+                        <a href="" id="link_rmp" target="_blank"><i class="fas fa-external-link-alt fa-2x" ></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal-tabs">
-        <button class="tablink">1</button>
-        <button class="tablink">2</button>
-        <button class="tablink">3</button>
-        <button class="tablink">4</button>
+        <div class="tab" id="tab_4">
+            <div class="modal-header">
+                <div class="title">
+                    <h1>Good Prof Bad Prof</h1>
+                </div>
+                <div class="logo_settings">
+                    <div class="logo">
+                        <h1>R</h1>
+                    </div>
+                    <div class="settings">
+                        <i class="fas fa-cog fa-2x"></i>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                        <i class="fas fa-question-circle fa-2x"></i>
+                        <i class="fas fa-times-circle fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content">
+                <div class="univ_name">
+                    <input type="text" placeholder="Enter University name here..." id="txt_univ">
+                    <h1 id="lbl_univ"></h1>
+                </div>
+                <div class="prof_name">
+                    <input type="text" placeholder="Enter Professor name here..." id="txt_prof">
+                    <h2 id="lbl_prof"></h2>
+                </div>
+                <div class="ratings">
+                    <div class="quality">
+                        <h1 id="lbl_quality">3.1</h1>
+                        <div class="star-ratings-css">
+                            <div class="star-ratings-css-top" style="width: 80%" id="rating_bar_quality">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <div class="star-ratings-css-bottom">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
+                    </div>
+                    <div class="difficulty">
+                        <h1 id="lbl_difficulty">3.1</h1>
+                        <div class="star-ratings-css">
+                            <div class="star-ratings-css-top" style="width: 80%" id="rating_bar_diff">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                            <div class="star-ratings-css-bottom">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit_link">
+                    <div class="rate">
+                        <button type="submit" id="submit"> RATE PROF </button>
+                        <button type="reset" class="reset"> Clear </button>
+                    </div>
+                    <div class="link">
+                        <a href="" id="link_rmp" target="_blank"><i class="fas fa-external-link-alt fa-2x" ></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-tabs">
+            <button class="tablink">1</button>
+            <button class="tablink">2</button>
+            <button class="tablink">3</button>
+            <button class="tablink">4</button>
+        </div>
     </div>
 </body>
 <script src="https://kit.fontawesome.com/65dd64b27c.js"></script> <!-- Font Awesome CDN -->

@@ -1,4 +1,4 @@
-function getProfData(univ, prof) {
+export function getProfData(univ, prof) {
 
     const http = new XMLHttpRequest();
     const url = 'http://54.87.246.226/';
