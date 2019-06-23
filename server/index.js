@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 				} else {
 					(async () => {
 						var result = await run(req.query.university, req.query.prof);
-						res.send(result);
+						res.send(JSON.stringify(result));
 						insertIntoSQL(result);
 					})();
 				}
