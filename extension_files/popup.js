@@ -25,8 +25,8 @@ $(document).ready(function() {
         URL = URL + "?university=" + univ + "&prof=" + prof
         $.get(URL, function(data, status){
             console.log(data);
-            data.QUALITY = (data.QUALITY).toFixed(1);
-            data.DIFFICULTY = (data.DIFFICULTY).toFixed(1);
+            data.QUALITY = parseFloat(data.QUALITY).toFixed(1);
+            data.DIFFICULTY = parseFloat(data.DIFFICULTY).toFixed(1);
             // Populate data in HTML
             $(tabNum).find('h1#lbl_univ').text(data.UNIVERSITY);
             $(tabNum).find('h2#lbl_prof').text(data.NAME);

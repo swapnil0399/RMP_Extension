@@ -82,53 +82,53 @@
 /* Toggle switch ends here */
 
 /* For Star Rating */
-.star-ratings-css {
-    unicode-bidi: bidi-override;
-    color: #c5c5c5;
-    font-size: 25px;
-    height: 25px;
-    width: 125px;
-    margin: 0 auto;
-    position: relative;
-    padding: 0;
-    text-shadow: 0px 1px 0 #a2a2a2;
-} 
-.star-ratings-css-top {
-      color: #e7711b;
-      padding: 0;
-      position: absolute;
-      z-index: 1;
-      display: block;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-}
-.star-ratings-css-bottom {
-      padding: 0;
-      display: block;
-      z-index: 0;
-}
+    .star-ratings-css {
+        unicode-bidi: bidi-override;
+        color: #c5c5c5;
+        font-size: 25px;
+        height: 25px;
+        width: 125px;
+        margin: 0 auto;
+        position: relative;
+        padding: 0;
+        text-shadow: 0px 1px 0 #a2a2a2;
+    } 
+    .star-ratings-css-top {
+        color: #e7711b;
+        padding: 0;
+        position: absolute;
+        z-index: 1;
+        display: block;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+    .star-ratings-css-bottom {
+        padding: 0;
+        display: block;
+        z-index: 0;
+    }
 /* Star Rating ends here */
 
 /* For Tab buttons */
 
 /* Style the tab buttons */
-.tablink {
-    background-color: #555;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 25%;
-}
+    .tablink {
+        background-color: #555;
+        color: white;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        font-size: 17px;
+        width: 25%;
+    }
 
 /* Change background color of buttons on hover */
-.tablink:hover {
-    background-color: #777;
-}
+    .tablink:hover {
+        background-color: #777;
+    }
 
 /* Set default styles for tab content */
 
