@@ -79,7 +79,6 @@ function run(univ, prof) {
 }
 
 function insertIntoSQL(result){
-	result = JSON.parse(result);
 	if(result){
 		var univ = String(result.UNIVERSITY).toUpperCase();
 		var prof = String(result.NAME).toUpperCase();
