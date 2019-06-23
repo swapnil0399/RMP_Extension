@@ -7,7 +7,8 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 def getData(univ, prof):
-
+    univ = univ.upper()
+    prof = prof.upper()
     try:
 
         url = "https://www.ratemyprofessors.com"
