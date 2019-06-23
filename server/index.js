@@ -78,10 +78,10 @@ function run(univ, prof) {
 function insertIntoSQL(result){
 	result = JSON.parse(result);
 	if(result){
-		var univ = String(result.University).toUpperCase();
-		var prof = String(result.Professor_Name).toUpperCase();
-		var quality = result.Quality;
-		var level = result.Level_Of_Diff;
+		var univ = String(result.UNIVERSITY).toUpperCase();
+		var prof = String(result.NAME).toUpperCase();
+		var quality = result.QUALITY;
+		var level = result.DIFFICULTY;
 		var url = result.URL;
 
 		console.log(univ, prof, quality, level, url);

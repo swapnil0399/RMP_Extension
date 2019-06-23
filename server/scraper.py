@@ -40,10 +40,10 @@ def getData(univ, prof):
             rating_url = driver.current_url
 
             return json.dumps({    
-                "University" : univ, 
-                "Professor_Name" : prof, 
-                "Quality" : quality, 
-                "Level_Of_Diff" : level_of_diff, 
+                "UNIVERSITY" : univ, 
+                "NAME" : prof, 
+                "QUALITY" : quality, 
+                "DIFFICULTY" : level_of_diff,
                 "URL" : rating_url
             })    
 

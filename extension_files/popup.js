@@ -8,6 +8,14 @@ $(document).ready(function() {
         $(tabname).show();
     });
 
+    $(this).ajaxStart(function(){
+        $(".loader").show();
+    });
+
+    $(this).ajaxComplete(function(){
+        $(".loader").hide();
+    });
+
     $(".rate").find(":submit").click(function(){
         var tabNum = "#" + getTabName(this);
         console.log(tabNum);
@@ -55,7 +63,10 @@ $(document).ready(function() {
         $(tabNum).find(".submit_link").find(":submit").show();
     });
 
-
+    $(".fa-cog").click(function(){
+        $(".fa-question-circle").slideToggle("2000");
+        $(".switch").slideToggle("1000");
+    })
 
     function init(){
         $(".loader").hide();
