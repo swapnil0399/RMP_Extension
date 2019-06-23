@@ -32,6 +32,7 @@ app.get('/', (req, res) => {
 	
 	console.log(req.query.university);
 	console.log(req.query.prof);
+	res.header("Content-Type",'application/json');
 
  	(async () => {
 		try {
