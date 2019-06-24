@@ -1,8 +1,12 @@
+/*************************************************************************************/
+/* Custom styles start here **********************************************************/
+/*************************************************************************************/
+
 #app {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 12px;
     font-weight: bolder;
-    height: 550px;
+    height: 570px;
     width: 400px;
     position: absolute;
     top: 10px;
@@ -28,7 +32,7 @@
     background: purple;
     position: absolute;
     width: 400px;
-    height: 140px;
+    height: 120px;
     position: absolute;
     padding: 10px 0px 10px 0px;
 }
@@ -57,6 +61,19 @@
     right: 10px;
 }
 
+.switch {
+    position: absolute;
+    top: 35px;
+    right: 0px;
+    width: 30px;
+    height: 20px;
+}
+
+.fa-question-circle {
+    position: absolute;
+    top: 65px;
+}
+
 .modal-content {
     background: violet;
     height: 310px;
@@ -66,153 +83,142 @@
 
 
 
+/*************************************************************************************/
+/* Custom styles end here ************************************************************/
+/*************************************************************************************/
 
-/* Loading icon */
-    .loader {
-        border: 16px solid #f3f3f3; /* Light grey */
-        border-top: 16px solid #3498db; /* Blue */
-        border-radius: 50%;
-        width: 120px;
-        height: 120px;
-        animation: spin 2s linear infinite;
-    }
-    .overlay {
-        background: #000000;
-        display: none;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        opacity: 0.5;
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-/* Loading icon ends here */
+/*************************************************************************************/
+/* Loading icon starts here **********************************************************/
+/*************************************************************************************/
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+.overlay {
+    background: #000000;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
+}
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/*************************************************************************************/
+/* Loading icon ends here ************************************************************/
+/*************************************************************************************/
 
+/*************************************************************************************/
+/* Toggle switch starts here *********************************************************/
+/*************************************************************************************/
 
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
 
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
 
+input:checked + .slider {
+    background-color: #2196F3;
+}
 
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
 
-/* Toggle switch starts here */
+/* Rounded sliders */
+.slider.round {
+    border-radius: 20px;
+}
 
-    /* The switch - the box around the slider */
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 30px;
-        height: 17px;
-    }
+.slider.round:before {
+    border-radius: 50%;
+}
 
-    /* Hide default HTML checkbox */
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
+input:checked + .slider:before {
+    -webkit-transform: translateX(12px);
+    -ms-transform: translateX(12px);
+    transform: translateX(12px);
+}
 
-    /* The slider */
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-    
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 13px;
-        width: 13px;
-        left: 2px;
-        bottom: 2px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    input:checked + .slider {
-        background-color: #2196F3;
-    }
-    
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 17px;
-    }
-    
-    .slider.round:before {
-        border-radius: 50%;
-    }
-    
-    input:checked + .slider:before {
-        -webkit-transform: translateX(13px);
-        -ms-transform: translateX(13px);
-        transform: translateX(13px);
-    }
-
-/* Toggle switch ends here */
+/*************************************************************************************/
+/* Toggle switch ends here ***********************************************************/
+/*************************************************************************************/
 
 
+/*************************************************************************************/
+/* Star Rating starts here ***********************************************************/
+/*************************************************************************************/
 
+.star-ratings-css {
+    unicode-bidi: bidi-override;
+    color: #c5c5c5;
+    font-size: 25px;
+    height: 25px;
+    width: 125px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    text-shadow: 0px 1px 0 #a2a2a2;
+} 
+.star-ratings-css-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.star-ratings-css-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* For Star Rating */
-    .star-ratings-css {
-        unicode-bidi: bidi-override;
-        color: #c5c5c5;
-        font-size: 25px;
-        height: 25px;
-        width: 125px;
-        margin: 0 auto;
-        position: relative;
-        padding: 0;
-        text-shadow: 0px 1px 0 #a2a2a2;
-    } 
-    .star-ratings-css-top {
-        color: #e7711b;
-        padding: 0;
-        position: absolute;
-        z-index: 1;
-        display: block;
-        top: 0;
-        left: 0;
-        overflow: hidden;
-    }
-    .star-ratings-css-bottom {
-        padding: 0;
-        display: block;
-        z-index: 0;
-    }
-/* Star Rating ends here */
-/* For Tab buttons */
+/*************************************************************************************/
+/* Star Rating ends here *************************************************************/
+/*************************************************************************************/
+ 
+/*************************************************************************************/
+/* Tab styles start here *************************************************************/
+/*************************************************************************************/
 
 .modal-tabs {
     position: absolute;
@@ -222,25 +228,27 @@
 }
 
 /* Style the tab buttons */
-    .tablink {
-        background-color: #555;
-        color: white;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        padding: 14px 16px;
-        font-size: 17px;
-        width: 25%;
-    }
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
 
 /* Change background color of buttons on hover */
-    .tablink:hover {
-        background-color: #5699ce;
-    }
+.tablink:hover {
+    background-color: #5699ce;
+}
 
 /* Set default styles for tab content */
 
-/* Style each tab content individually */ 
+/* Style each tab content individually */
 
-/* Tab buttons end here */
+/*************************************************************************************/
+/* Tab styles end here *************************************************************/
+/*************************************************************************************/
