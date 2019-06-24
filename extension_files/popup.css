@@ -1,6 +1,7 @@
 :root {  
     --primary-color: #eae5ab;
-    --secondary-color:#4f90c3;
+    --secondary-color:#2e5f85;
+    --text-color: #000000;
 }
 
 body {
@@ -57,7 +58,7 @@ body {
 }
 
 .logo {
-    background: #4f90c3;
+    background: var(--secondary-color);
     position: absolute;
     top: 10px;
     bottom: 10px;
@@ -94,8 +95,8 @@ body {
 }
 
 .modal-content {
-    background: violet;
-    height: 320px;
+    background: var(--primary-color);
+    height: 325px;
     width: 400px;
     position: absolute;
 }
@@ -144,9 +145,10 @@ body {
 #lbl_prof {
     width: inherit;
     height: inherit;
-    font-size: 16px;
+    font-size: 20px;
     text-align: center;
     font-weight: bold;
+    color: var(--text-color);
 }
 
 #lbl_univ {
@@ -155,6 +157,7 @@ body {
     font-size: 20px;
     text-align: center;
     font-weight: bold;
+    color: var(--text-color);
 }
 
 .submit_link {
@@ -190,6 +193,52 @@ body {
     position: absolute;
     bottom: 5px;
     right: 5px;
+}
+
+.ratings {
+
+    height: 250px;
+    width: inherit;
+}
+.quality {
+    width: 200px;
+    height: 220px;
+    position: absolute;
+    bottom: 0px;
+}
+
+.difficulty {
+    width: 200px;
+    height: 220px;
+    position: absolute;
+    bottom: 0px;
+    right:0px;
+}
+
+#label {
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    right: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.lbl_content {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--secondary-color);
 }
 
 /*************************************************************************************/
@@ -296,17 +345,20 @@ input:checked + .slider:before {
 
 .star-ratings-css {
     unicode-bidi: bidi-override;
-    color: #c5c5c5;
+    color: gray;
     font-size: 25px;
     height: 25px;
     width: 125px;
     margin: 0 auto;
-    position: relative;
     padding: 0;
     text-shadow: 0px 1px 0 #a2a2a2;
+    position: absolute;
+    left: 37px;
+    right: 37px;
+    top: 100px;
 } 
 .star-ratings-css-top {
-    color: #e7711b;
+    color: var(--secondary-color);
     padding: 0;
     position: absolute;
     z-index: 1;
@@ -338,8 +390,8 @@ input:checked + .slider:before {
 
 /* Style the tab buttons */
 .tablink {
-    background-color: #555;
-    color: white;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     float: left;
     border: none;
     outline: none;
@@ -348,15 +400,6 @@ input:checked + .slider:before {
     font-size: 17px;
     width: 25%;
 }
-
-/* Change background color of buttons on hover */
-.tablink:hover {
-    background-color: #5699ce;
-}
-
-/* Set default styles for tab content */
-
-/* Style each tab content individually */
 
 /*************************************************************************************/
 /* Tab styles end here *************************************************************/
