@@ -1,3 +1,12 @@
+:root {  
+    --primary-color: #eae5ab;
+    --secondary-color:#4f90c3;
+}
+
+body {
+    margin: 0px;
+}
+
 /*************************************************************************************/
 /* Custom styles start here **********************************************************/
 /*************************************************************************************/
@@ -6,12 +15,15 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 12px;
     font-weight: bolder;
-    height: 570px;
+    height: 550px;
     width: 400px;
     position: absolute;
     top: 10px;
     right: 10px;
     background: #f9f8ee;
+    border-top: 2px solid black;
+    border-left: 2px dashed var(--primary-color);
+    border-right: 2px dashed var(--primary-color);
 }
 
 .modal-header {
@@ -21,15 +33,22 @@
 }
 
 .title {
-    background: green;
+    background: var(--secondary-color);
+    color: var(--primary-color);
     position: realtive;
-    height: 40px;
+    height: 30px;
     width: inherit;
     top: 0px;
+    text-align: center;
+    padding: 5px;
+}
+
+.title span {
+    font-size: 30px;
 }
 
 .logo_settings {
-    background: purple;
+    background: var(--primary-color);
     position: absolute;
     width: 400px;
     height: 120px;
@@ -52,7 +71,7 @@
 
 #logo_content {
     font-size: 100px;
-    color: #eae5ab;
+    color: var(--primary-color);
 }
 
 .settings {
@@ -76,12 +95,102 @@
 
 .modal-content {
     background: violet;
-    height: 310px;
+    height: 320px;
     width: 400px;
     position: absolute;
 }
 
+.univ_name {
+    width : 396px;
+    height: 56px;
+    background: var(--primary-color);
+    position: absolute;
+    padding: 2px;
+}
 
+.prof_name {
+    width : 396px;
+    height: 36px;
+    background: var(--primary-color);
+    position: absolute;
+    top: 60px;
+    padding: 2px;
+}
+
+::-webkit-input-placeholder {
+    font-size: 14px;
+}
+
+#txt_univ {
+    width : 380px;
+    height: 48px;
+    background: var(--primary-color);
+    border: 3px solid var(--secondary-color);
+    border-left: 10px solid var(--secondary-color);
+    color: var(--secondary-color);
+    font-size: 20px;
+}
+
+#txt_prof {
+    width : 380px;
+    height: 28px;
+    background: var(--primary-color);
+    border: 3px solid var(--secondary-color);
+    border-left: 10px solid var(--secondary-color);
+    color: var(--secondary-color);
+    font-size: 16px;
+}
+
+#lbl_prof {
+    width: inherit;
+    height: inherit;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#lbl_univ {
+    width: inherit;
+    height: inherit;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.submit_link {
+    background: var(--primary-color);
+    width: inherit;
+    height: 50px;
+    position: absolute;
+    bottom: 0px;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+}
+
+.rate {
+    width : 100px;
+    height: 40px;
+    position: relative;
+    top: 5px;
+    bottom: 150px;
+    left: 150px;
+    right: 10px;
+}
+
+.rate button {
+    height: inherit;
+    width: inherit;
+    font-size: 15px;
+    font-weight: bold;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.link {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
 
 /*************************************************************************************/
 /* Custom styles end here ************************************************************/

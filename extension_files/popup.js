@@ -71,6 +71,10 @@ $(document).ready(function() {
         $(".switch").slideToggle("1000");
     })
 
+    $(".switch").find(":input").click(function(){
+        // Change view
+    });
+
     function init(){
         var class_list = [".tab", ".ratings", ".link", ".reset", ".fa-question-circle", ".switch"]
         
