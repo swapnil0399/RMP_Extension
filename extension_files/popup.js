@@ -4,7 +4,7 @@ $(document).ready(function () {
         light_primary: "#eae5ab",
         light_secondary: "#2e5f85",
         dark_primary: "#222831",
-        dark_secondary: "#c72c41",
+        dark_secondary: "#339999",
         light_text: "#000000"
     };
     var tabNum;
@@ -37,7 +37,6 @@ $(document).ready(function () {
         var prof = $(tabNum).find("#txt_prof").val().toString();
         var univ = $(tabNum).find("#txt_univ").val().toString();
         URL = URL + "?university=" + univ + "&prof=" + prof
-
         $.get(URL, function (data, status) {
             console.log(data);
             data.QUALITY = parseFloat(data.QUALITY).toFixed(1);

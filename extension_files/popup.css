@@ -191,8 +191,12 @@ body {
 
 .link {
     position: absolute;
-    bottom: 5px;
-    right: 5px;
+    bottom: 10px;
+    right: 7px;
+}
+
+#link_rmp {
+    color: var(--secondary-color);
 }
 
 .ratings {
