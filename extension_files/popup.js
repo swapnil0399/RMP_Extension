@@ -7,7 +7,7 @@ $(document).ready(function () {
         dark_secondary: "#c72c41",
         light_text: "#000000"
     };
-
+    var tabNum;
     var primary_color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
     var secondary_color = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color');
     var text_color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
@@ -23,15 +23,15 @@ $(document).ready(function () {
     });
 
     $(this).ajaxStart(function () {
-        $("#overlay").css("display", "block");
+        $(tabNum).find("#overlay").css("display", "block");
     });
 
     $(this).ajaxComplete(function () {
-        $("#overlay").css("display", "none");
+        $(tabNum).find("#overlay").css("display", "none");
     });
 
     $(".rate").find(":submit").click(function () {
-        var tabNum = "#" + getTabName(this);
+        tabNum = "#" + getTabName(this);
         console.log(tabNum);
         var URL = "http://ec2-54-87-246-226.compute-1.amazonaws.com/"
         var prof = $(tabNum).find("#txt_prof").val().toString();
