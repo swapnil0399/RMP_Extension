@@ -92,6 +92,7 @@ body {
 .fa-question-circle {
     position: absolute;
     top: 65px;
+    right: 0px;
 }
 
 .modal-content {
