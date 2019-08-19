@@ -216,6 +216,7 @@ $(document).ready(function () {
                 console.log(xhr.responseText);
                 console.log(status);
                 console.log(error);
+                return error;
             }
         });
         requestObject[1] = tabNum;
@@ -258,4 +259,4 @@ $(document).ready(function () {
 
 });
 
-// http://ec2-54-87-246-226.compute-1.amazonaws.com/?university=The University of Texas at Dallas&prof=Zygmunt Haas
+// http://{DOMAIN_NAME}/?university=The University of Texas at Dallas&prof=Zygmunt Haas
