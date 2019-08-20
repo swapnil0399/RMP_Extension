@@ -12,6 +12,7 @@ This is a chrome extension which provides rating for the professors. It scrapes 
 * Faster data retrieval
 * Accordion to read comments
 * More themes for the app
+* Drop down list to select professors and universities
 
 ### Launch Date
 
