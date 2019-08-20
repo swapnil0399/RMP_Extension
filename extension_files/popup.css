@@ -24,8 +24,8 @@ body {
     position: absolute;
     background: #f9f8ee;
     border-top: 2px solid black;
-    border-left: 2px dashed var(--primary-color);
-    border-right: 2px dashed var(--primary-color);
+    border-left: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
 }
 
 .modal-header {

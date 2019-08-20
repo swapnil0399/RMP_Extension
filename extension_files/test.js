@@ -4,59 +4,10 @@ $(document).ready(function () {
         light_primary: "#eae5ab",
         light_secondary: "#2e5f85",
         dark_primary: "#222831",
-        dark_secondary: "#00adb5",
+        dark_secondary: "#339999",
         light_text: "#000000"
     };
     var tabNum;
-    var tab_dict =  {};
-    var ajaxManager = {
-        requests: [],
-        addReq: function(req) {
-            this.requests.push(req);
-            var prof = req[0].url.substring(req[0].url.indexOf('&'))
-            tab_dict[prof.substring(prof.indexOf('=')).slice(1).toUpperCase()] = req[1];
-            console.log(tab_dict);
-            console.log("Request Added");
-            console.log("Request object length: " + this.requests.length)
-            if (this.requests.length == 1) {
-                console.log("Fired the run function")
-                this.run();
-            }
-        },
-        removeReq: function(req) {
-            if($.inArray(req, requests) > -1)
-                this.requests.splice($.inArray(req, requests), 1);
-        },
-        run: function() {
-            var ajxmgr = this;
-            var requests = this.requests;
-            Promise.resolve($.ajax(this.requests[0][0])).then(function(data, error){
-                if(error){
-                    console.log(error)
-                    $(ajxmgr.requests[0][1]).find("#overlay").css("display", "none");
-                    setData(error, ajxmgr.requests[0][1], true);
-                    delete tab_dict[prof_name];
-                } else{
-                    console.log(data);
-                    var prof_name = data.NAME;
-                    setData(data, tab_dict[prof_name], false);
-                    $(tab_dict[prof_name]).find("#overlay").css("display", "none");
-                    console.log("After the get request " + prof_name)
-                    delete tab_dict[prof_name];
-                    console.log(tab_dict)
-                }
-                ajxmgr.requests.shift();
-                console.log("length: " + ajxmgr.requests.length)
-                if (ajxmgr.requests.length > 0) {
-                    ajxmgr.run();
-                }
-            });
-        },
-        stop: function() {
-            this.requests = [];
-        }
-    }
-
     var primary_color = getComputedStyle(document.documentElement).getPropertyValue('--primary-color');
     var secondary_color = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color');
     var text_color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
@@ -71,16 +22,51 @@ $(document).ready(function () {
         $(this).css("color", secondary_color);
     });
 
+    $(this).ajaxStart(function () {
+        $(tabNum).find("#overlay").css("display", "block");
+    });
+
+    $(this).ajaxComplete(function () {
+        $(tabNum).find("#overlay").css("display", "none");
+    });
+
     $(".rate").find(":submit").click(function () {
         tabNum = "#" + getTabName(this);
         console.log(tabNum);
-        $(tabNum).find("#overlay").css("display", "block");
         var URL = "http://ec2-54-174-106-197.compute-1.amazonaws.com/"
         var prof = $(tabNum).find("#txt_prof").val().toString();
         var univ = $(tabNum).find("#txt_univ").val().toString();
         URL = URL + "?university=" + univ + "&prof=" + prof
-        var requestObject = createRequest(URL, tabNum);
-        ajaxManager.addReq(requestObject);
+        if(!((prof == null || prof === '') || (univ == null || univ === ''))){
+            $.get(URL, function (data, status) {
+                console.log(data);
+                data.QUALITY = parseFloat(data.QUALITY).toFixed(1);
+                data.DIFFICULTY = parseFloat(data.DIFFICULTY).toFixed(1);
+                $(tabNum).find('#link_rmp').attr("href", data.URL);
+    
+                // Populate data in HTML
+                $(tabNum).find('#lbl_univ').text(data.UNIVERSITY);
+                $(tabNum).find('#lbl_prof').text(data.NAME);
+                $(tabNum).find('#lbl_quality').text(data.QUALITY);
+                $(tabNum).find('#lbl_difficulty').text(data.DIFFICULTY);
+                $(tabNum).find('#link_rmp').attr("href", data.URL)
+    
+                // Hide and Unhide Elements
+                $(tabNum).find('#txt_univ').hide();
+                $(tabNum).find('#txt_prof').hide();
+                $(tabNum).find('#lbl_univ').show();
+                $(tabNum).find('#lbl_prof').show();
+                $(tabNum).find(".ratings").show();
+                $(tabNum).find(".link").show();
+                $(tabNum).find('.reset').show();
+    
+                // Populate Ratings Bar
+                $(tabNum).find('#rating_bar_quality').attr("style", "width: " + ((data.QUALITY / 5) * 100).toString() + "%");
+                $(tabNum).find('#rating_bar_diff').attr("style", "width: " + ((data.DIFFICULTY / 5) * 100).toString() + "%");
+            });
+            $(tabNum).find("#submit").hide();
+            clearTextFields();
+        }
     });
 
     $(".reset").click(function () {
@@ -202,61 +188,6 @@ $(document).ready(function () {
         });
     }
 
-    function createRequest(reqURL, tabNum) {
-        var requestObject = new Array(2);
-        requestObject[0] = ({
-            type: 'GET',
-            url: reqURL,
-            datatype: 'json',
-            crossDomain: true,
-            success: function(data){
-                return data;
-            },
-            error: function (xhr, status, error) {
-                console.log(xhr.responseText);
-                console.log(status);
-                console.log(error);
-                return error;
-            }
-        });
-        requestObject[1] = tabNum;
-        console.log(requestObject);
-        return requestObject;
-    }
-
-    function setData(data, tabNum, error) {
-
-        if(error){
-            // Set Error Data
-        } else {
-            $(tabNum).find("#submit").hide();
-            data.QUALITY = parseFloat(data.QUALITY).toFixed(1);
-            data.DIFFICULTY = parseFloat(data.DIFFICULTY).toFixed(1);
-            $(tabNum).find('#link_rmp').attr("href", data.URL);
-
-            // Populate data in HTML
-            $(tabNum).find('#lbl_univ').text(data.UNIVERSITY);
-            $(tabNum).find('#lbl_prof').text(data.NAME);
-            $(tabNum).find('#lbl_quality').text(data.QUALITY);
-            $(tabNum).find('#lbl_difficulty').text(data.DIFFICULTY);
-            $(tabNum).find('#link_rmp').attr("href", data.URL)
-
-            // Hide and Unhide Elements
-            $(tabNum).find('#txt_univ').hide();
-            $(tabNum).find('#txt_prof').hide();
-            $(tabNum).find('#lbl_univ').show();
-            $(tabNum).find('#lbl_prof').show();
-            $(tabNum).find(".ratings").show();
-            $(tabNum).find(".link").show();
-            $(tabNum).find('.reset').show();
-
-            // Populate Ratings Bar
-            $(tabNum).find('#rating_bar_quality').attr("style", "width: " + ((data.QUALITY / 5) * 100).toString() + "%");
-            $(tabNum).find('#rating_bar_diff').attr("style", "width: " + ((data.DIFFICULTY / 5) * 100).toString() + "%");
-            clearTextFields();
-        }
-    }
-
 });
 
-// http://{DOMAIN_NAME}/?university=The University of Texas at Dallas&prof=Zygmunt Haas
+// http://ec2-54-197-15-125.compute-1.amazonaws.com/?university=The University of Texas at Dallas&prof=Zygmunt Haas
