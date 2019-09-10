@@ -13,7 +13,7 @@ This is a chrome extension which provides rating for the professors. It scrapes 
 * Accordion to read comments
 * More themes for the app
 * Drop down list to select professors and universities
-* Professor Insight
+* Professor Insights
 
 ### Launch Date
 
