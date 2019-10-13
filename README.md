@@ -17,4 +17,4 @@ This is a chrome extension which provides rating for the professors. It scrapes 
 
 ### Launch Date
 
-Available on chrome web store by October 15, 2019
+Available on chrome web store by November 15, 2019
