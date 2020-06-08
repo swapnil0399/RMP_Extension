@@ -6,15 +6,4 @@ This is a chrome extension which provides rating for the professors. It scrapes 
 
 ![Extension Demo](demo/demo.gif)
 
-## Upcoming Patches
-
-* Modification in UI design
-* Faster data retrieval
-* Accordion to read comments
-* More themes for the app
-* Drop down list to select professors and universities
-* Professor Insights
-
-### Launch Date
-
-Available on chrome web store by November 15, 2019
+### This extension is no longer updated. Please visit this repository for new extension updates https://github.com/swapnil0399/Grade_My_Professor
